@@ -2,7 +2,7 @@ package com.saratms.clickstask.data.models
 
 
 import com.google.gson.annotations.SerializedName
-import com.saratms.clickstask.models.News
+import com.saratms.clickstask.core.models.News
 
 data class NewsResponse(
     @SerializedName("articles")
@@ -37,8 +37,8 @@ data class NewsResponse(
             var name: String
         )
     }
+}
 
-    fun List<Article>.mapTo(): List<News> {
-        return this.map { News(it.title, it.urlToImage, it.source.name) }
-    }
+fun List<NewsResponse.Article>.mapToNews(): List<News> {
+    return this.map { News(it.title, it.urlToImage, it.source.name) }
 }

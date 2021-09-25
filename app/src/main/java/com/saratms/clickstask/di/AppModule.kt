@@ -1,12 +1,15 @@
 package com.saratms.clickstask.di
 
+import com.saratms.clickstask.core.NewsRepository
 import com.saratms.clickstask.data.NewsApiService
+import com.saratms.clickstask.ui.newsList.NewsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 import javax.inject.Singleton
 
 
@@ -22,4 +25,9 @@ class AppModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(NewsApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideNewsRepository(newsApiService: NewsApiService): NewsRepository =
+        NewsRepositoryImpl(newsApiService)
 }

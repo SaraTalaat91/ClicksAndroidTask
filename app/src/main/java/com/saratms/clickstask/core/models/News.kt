@@ -1,4 +1,4 @@
-package com.saratms.clickstask.models
+package com.saratms.clickstask.core.models
 
 import java.io.Serializable
 

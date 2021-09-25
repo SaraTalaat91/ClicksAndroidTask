@@ -1,8 +1,7 @@
 package com.saratms.clickstask.core
 
-import com.saratms.clickstask.data.models.NewsResponse
-import retrofit2.Response
+import com.saratms.clickstask.core.models.News
 
 interface NewsRepository {
-    suspend fun getNewsFromApi(locale: String, apiKey: String): Response<NewsResponse>
+    suspend fun getNewsFromApi(locale: String, apiKey: String): State<List<News>>
 }
