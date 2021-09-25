@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.saratms.clickstask.R
 import com.saratms.clickstask.core.State
@@ -52,7 +53,10 @@ class NewsListFragment : Fragment() {
         })
 
 
-        newsAdapter = NewsListAdapter(requireContext(), mutableListOf())
+        newsAdapter = NewsListAdapter(requireContext(), mutableListOf()) {news ->
+            NavHostFragment.findNavController(this).navigate(NewsListFragmentDirections.actionNewsListFragmentToNewsDetailFragment(news))
+        }
+
         binding.newsRecycler.adapter = newsAdapter
         binding.newsRecycler.layoutManager = LinearLayoutManager(requireContext())
     }

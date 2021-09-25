@@ -1,6 +1,5 @@
 package com.saratms.clickstask.ui.newsListList
 
-import android.R
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,11 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.saratms.clickstask.R
 import com.saratms.clickstask.core.models.News
 import com.saratms.clickstask.databinding.LayoutNewsItemBinding
 
 
-class NewsListAdapter(val context: Context, private val newsList: MutableList<News>) :
+class NewsListAdapter(
+    val context: Context,
+    private val newsList: MutableList<News>,
+    val clickEvent: (News) -> Unit
+) :
     RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
@@ -29,11 +33,11 @@ class NewsListAdapter(val context: Context, private val newsList: MutableList<Ne
 
                 val circulatProgressDrawable = CircularProgressDrawable(context)
 
-                with(circulatProgressDrawable){
+                with(circulatProgressDrawable) {
                     setColorSchemeColors(
-                        R.color.holo_blue_light,
-                        R.color.holo_blue_dark,
-                        R.color.holo_blue_bright
+                        R.color.design_default_color_primary,
+                        R.color.design_default_color_primary_dark,
+                        R.color.design_default_color_primary_variant
                     )
                     centerRadius = 30f
                     strokeWidth = 5f
@@ -43,7 +47,12 @@ class NewsListAdapter(val context: Context, private val newsList: MutableList<Ne
                 Glide.with(context).load(image)
                     .placeholder(circulatProgressDrawable)
                     .transition(DrawableTransitionOptions.withCrossFade())
+                    .error(R.color.gray)
                     .into(newsItemBinding.newsImageIv)
+
+                newsItemBinding.root.setOnClickListener{
+                    clickEvent.invoke(this)
+                }
             }
         }
     }
