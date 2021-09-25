@@ -25,7 +25,7 @@ class NewsListViewModel @ViewModelInject constructor
         viewModelScope.launch(Dispatchers.IO) {
             val result = newsRepository.getNewsFromApi(locale, apiKey)
             if (result is State.DataState) {
-                _allNewsList.value = result.data.filter { true }
+                _allNewsList.postValue(result.data.filter { true })
             }
             _newsState.postValue(result)
         }
