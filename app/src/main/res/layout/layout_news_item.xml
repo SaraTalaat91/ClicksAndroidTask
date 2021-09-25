@@ -23,12 +23,11 @@
         <TextView
             android:id="@+id/news_source_tv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="start|center_vertical"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
             android:paddingStart="10dp"
-            android:paddingTop="6dp"
+            android:paddingTop="10dp"
             android:paddingEnd="10dp"
-            android:paddingBottom="3dp"
             android:textColor="@android:color/darker_gray"
             android:textSize="13sp"
             tools:text="news source" />
@@ -36,13 +35,13 @@
         <TextView
             android:id="@+id/news_title_tv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="start|center_vertical"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
             android:paddingStart="10dp"
-            android:paddingTop="3dp"
+            android:paddingTop="8dp"
             android:paddingEnd="10dp"
-            android:paddingBottom="6dp"
-            android:textSize="15sp"
+            android:paddingBottom="16dp"
+            style="@style/NewsTitleStyle"
             tools:text="Big news that changes the world" />
 
     </LinearLayout>
