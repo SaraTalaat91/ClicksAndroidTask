@@ -40,5 +40,5 @@ data class NewsResponse(
 }
 
 fun List<NewsResponse.Article>.mapToNews(): List<News> {
-    return this.map { News(it.title, it.urlToImage, it.source.name) }
+    return this.map { News(it.title, it.urlToImage, it.source.name, it.description) }
 }
