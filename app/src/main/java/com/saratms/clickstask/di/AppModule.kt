@@ -22,5 +22,4 @@ class AppModule {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(NewsApiService::class.java)
-
 }
