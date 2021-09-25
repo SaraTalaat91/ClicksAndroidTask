@@ -24,8 +24,8 @@ class NewsListAdapter(val context: Context, private val newsList: MutableList<Ne
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         with(holder) {
             with(newsList[position]) {
-                newsItemBinding.newsTitleTv.setText(source)
-                newsItemBinding.newsSourceTv.setText(title)
+                newsItemBinding.newsTitleTv.setText(title)
+                newsItemBinding.newsSourceTv.setText(source)
 
                 val circulatProgressDrawable = CircularProgressDrawable(context)
 

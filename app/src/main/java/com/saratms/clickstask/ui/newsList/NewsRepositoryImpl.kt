@@ -5,6 +5,7 @@ import com.saratms.clickstask.core.State
 import com.saratms.clickstask.data.NewsApiService
 import com.saratms.clickstask.data.models.mapToNews
 import com.saratms.clickstask.core.models.News
+import java.io.IOException
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
@@ -20,7 +21,11 @@ class NewsRepositoryImpl @Inject constructor(
                 State.ErrorState(Exception(response.message()))
             }
         } catch (exception: Exception) {
-            State.ErrorState(exception)
+            if (exception is IOException) {
+                State.ErrorState(Exception("No internet connection"))
+            } else {
+                State.ErrorState(exception)
+            }
         }
     }
 }

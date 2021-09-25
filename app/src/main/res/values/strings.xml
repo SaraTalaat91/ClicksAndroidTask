@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ClicksTask</string>
+    <string name="empty_view_statement">No results found</string>
+    <string name="apikey">63b1f94dad044add871d1e319c630265</string>
 </resources>
